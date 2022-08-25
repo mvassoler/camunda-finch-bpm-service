@@ -47,3 +47,16 @@ camunda:
       enabled: true
     webapp:
       application-path: /camundafinch
+
+logging:
+  file:
+    name: ./public/logs/dev/@project.artifactId@/@project.artifactId@-@project.version@.log
+    pattern:
+      console: "%clr(%d{yy-MM-dd E HH:mm:ss.SSS}){blue} %clr(%-5p) %clr(${PID}){faint} %clr(---){faint} %clr([%8.15t]){cyan} %clr(%-40.40logger{0}){blue} %clr(:){red} %clr(%m){faint}%n"
+      file: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"
+  level:
+    root: INFO
+  logback:
+    rollingpolicy:
+      max-file-size: 20MB
+      max-history: 10
