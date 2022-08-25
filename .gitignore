@@ -52,3 +52,4 @@ Docker/public/logs
 Docker/logs
 Docker/jar/*.jar
 *.jar
+/public/
