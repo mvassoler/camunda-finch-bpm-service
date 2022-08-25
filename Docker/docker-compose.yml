@@ -1,0 +1,29 @@
+version: '3'
+services:
+  router-service:
+    image: openjdk:15-oracle
+    container_name: ${ENVIRONMENT}-camunda-finch-bpm-service
+    hostname: ${ENVIRONMENT}-camunda-finch-bpm-service
+    restart: unless-stopped
+    volumes:
+      - ./${JAR_FILE}:/${JAR_FILE}
+      - /opt/docker/data/${ENVIRONMENT}-camunda-finch-bpm-service/logs:/public/logs
+    environment:
+      - TZ=America/Sao_Paulo
+      - SPRING_PROFILES_ACTIVE=${ENVIRONMENT}
+    network_mode: host
+    ports:
+      - ${SERVICE_PORT}:8080
+    entrypoint:
+      - "java"
+      - "-server"
+      - "-XX:MetaspaceSize=64M"
+      - "-XX:MaxMetaspaceSize=300M"
+      - "-Xmx1g"
+      - "-Xms1g"
+      - "-jar"
+      - "/${JAR_FILE}"
+    logging:
+      options:
+        max-size: "100m"
+        max-file: "3"

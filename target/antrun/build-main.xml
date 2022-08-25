@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="maven-antrun-" default="main">
+  <target name="main">
+    <copy file="target/camunda-finch-bpm-service-1.0.0-SNAPSHOT.jar" tofile="Docker/jar/camunda-finch-bpm-service.jar" />
+  </target>
+</project>

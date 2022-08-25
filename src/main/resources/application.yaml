@@ -1,51 +1,5 @@
-server:
-  port: 8080
-
 spring:
+  profiles:
+    active: ${ENVIRONMENT:dev}
   application:
     name: camunda-finch-bpm-service
-  output:
-    ansi:
-      enabled: always
-  profiles:
-    active: local
-  jpa:
-    database-platform: org.hibernate.dialect.PostgreSQLDialect
-  datasource:
-    type: com.zaxxer.hikari.HikariDataSource
-    url: jdbc:postgresql://localhost:5432/camundaworkflow
-    username: postgres
-    password: 123
-    hikari:
-      jdbc-url: jdbc:postgresql://localhost:5432/camundaworkflow
-      username: postgres
-      password: 123
-      driver-class-name: org.postgresql.Driver
-      pool-name: CAMUNDA-HIKARI-POOL
-      idle-timeout: 3000
-      minimum-idle: 30
-      maximum-pool-size: 10
-      connection-timeout: 2000
-      connection-test-query: select 1
-      transaction-isolation: TRANSACTION_READ_COMMITTED
-
-camunda:
-  bpm:
-    enabled: true
-    admin-user:
-      id: admin
-      password: finch@123
-      email: marcosvassoler@finch.com.br
-      first-name: Marcos
-      last-name: Vassoler
-    database:
-      schema-update: true
-    filter:
-      create: All
-    history-level: full
-    auto-deployment-enabled: true
-    default-number-of-retries: 3
-    job-execution:
-      enabled: true
-    webapp:
-      application-path: /camundafinch
